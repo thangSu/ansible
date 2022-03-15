@@ -35,7 +35,6 @@
       get_url:
         url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.18/bin/apache-tomcat-10.0.18.tar.gz
         dest: ~/apache-tomcat-10.0.18.tar.gz
-        checksum: "sha1:67650d6deda0c0ba9e8c7db7fe4006c35d6dc7db"
       become: yes
       become_user: tomcat
 
