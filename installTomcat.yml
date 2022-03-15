@@ -34,14 +34,14 @@
     - name: Get TOMCAT installer
       get_url:
         url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.18/bin/apache-tomcat-10.0.18.tar.gz
-        dest: ~/apache-tomcat-8.5.15.tar.gz
+        dest: ~/apache-tomcat-10.0.18.tar.gz
         checksum: "sha1:67650d6deda0c0ba9e8c7db7fe4006c35d6dc7db"
       become: yes
       become_user: tomcat
 
     - name: Install tomcat
       unarchive:
-        src: ~/apache-tomcat-8.5.15.tar.gz
+        src: ~/apache-tomcat-10.0.18.tar.gz
         dest:  ~/
         remote_src: yes
       become: yes
@@ -50,7 +50,7 @@
     - name: Remove installer
       file:
         state: absent
-        path: ~/apache-tomcat-8.5.15.tar.gz
+        path: ~/apache-tomcat-10.0.18.tar.gz
       become: yes
       become_user: tomcat
 
