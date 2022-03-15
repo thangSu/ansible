@@ -58,7 +58,7 @@
         state: present
     - name: install firewalld
       pip:
-        name: firewalld
+        name: firewalld==0.2.11
     - name: Open the port used by Tomcat on the firewall
       firewalld:
         port: 8080/tcp
