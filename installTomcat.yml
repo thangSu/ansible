@@ -33,7 +33,7 @@
         path: /tmp/jdk-8u131-linux-x64.rpm
     - name: Get TOMCAT installer
       get_url:
-        url: http://ftp.riken.jp/net/apache/tomcat/tomcat-8/v8.5.15/bin/apache-tomcat-8.5.15.tar.gz
+        url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.18/bin/apache-tomcat-10.0.18.tar.gz
         dest: ~/apache-tomcat-8.5.15.tar.gz
         checksum: "sha1:67650d6deda0c0ba9e8c7db7fe4006c35d6dc7db"
       become: yes
