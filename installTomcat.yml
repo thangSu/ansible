@@ -5,7 +5,7 @@
   tasks:
     - name: update the system
       yum:
-        update: yes
+        upgrade: yes
         update_cache: yes
     - name: create tomcat user
       user:
