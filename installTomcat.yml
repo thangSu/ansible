@@ -33,14 +33,14 @@
         path: /tmp/jdk-8u131-linux-x64.rpm
     - name: Get TOMCAT installer
       get_url:
-        url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.18/bin/apache-tomcat-10.0.18.tar.gz
-        dest: ~/apache-tomcat-10.0.18.tar.gz
+        url: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.76/bin/apache-tomcat-8.5.76.tar.gz
+        dest: ~/apache-tomcat-8.5.76.tar.gz
       become: yes
       become_user: tomcat
 
     - name: Install tomcat
       unarchive:
-        src: ~/apache-tomcat-10.0.18.tar.gz
+        src: ~/apache-tomcat-8.5.76.tar.gz
         dest:  ~/
         remote_src: yes
       become: yes
@@ -49,7 +49,7 @@
     - name: Remove installer
       file:
         state: absent
-        path: ~/apache-tomcat-10.0.18.tar.gz
+        path: ~/apache-tomcat-8.5.76.tar.gz
       become: yes
       become_user: tomcat
 
