@@ -1,6 +1,6 @@
 ---
 - name: install Tomcat server
-  host: 10.0.0.199
+  hosts: 10.0.0.199
   tasks:
     - name: update the system
       apt:
