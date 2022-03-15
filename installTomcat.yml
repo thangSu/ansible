@@ -57,7 +57,7 @@
         name: firewalld
         state: present
     - name: run firewalld
-      systemctl:
+      systemd:
         name: firewalld
         state: started
         daemon_reload: true
