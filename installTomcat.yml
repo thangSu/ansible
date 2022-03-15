@@ -31,29 +31,33 @@
       file:
         state: absent
         path: /tmp/jdk-8u131-linux-x64.rpm
-    - name:  create tomcat directory
-      file:
-        path: /opt/tomcat10
-        owner: tomcat
-        group: tomcat
-        mode: 755
-        recurse: yes
-    - name: download and unrar tomcat10
+    - name: Get TOMCAT installer
+      get_url:
+        url: http://ftp.riken.jp/net/apache/tomcat/tomcat-8/v8.5.15/bin/apache-tomcat-8.5.15.tar.gz
+        dest: ~/apache-tomcat-8.5.15.tar.gz
+        checksum: "sha1:67650d6deda0c0ba9e8c7db7fe4006c35d6dc7db"
+      become: yes
+      become_user: tomcat
+
+    - name: Install tomcat
       unarchive:
-        src: https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.18/bin/apache-tomcat-10.0.18.tar.gz
-        dest: /opt/tomcat10
+        src: ~/apache-tomcat-8.5.15.tar.gz
+        dest:  ~/
         remote_src: yes
-        extra_opts: [--strip-components=1]
-    - name: Change ownership of tomcat directory
+      become: yes
+      become_user: tomcat
+
+    - name: Remove installer
       file:
-        path: /opt/tomcat10
-        owner: tomcat
-        group: tomcat
-        mode: "u+rwx,g+rx,o=rx"
-        recurse: yes
-        state: directory
-    - name: Start and Enable Tomcat 10 on sever
-      systemd:
-        name: tomcat
-        state: started
-        daemon_reload: true
+        state: absent
+        path: ~/apache-tomcat-8.5.15.tar.gz
+      become: yes
+      become_user: tomcat
+
+    - name: Open the port used by Tomcat on the firewall
+      firewalld:
+        port: 8080/tcp
+        permanent: yes
+        immediate: yes
+        state: enabled
+      become: yes
