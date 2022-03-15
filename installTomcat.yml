@@ -4,7 +4,7 @@
   remote_user: 
   tasks:
     - name: update the system
-      apt:
+      yum:
         update: yes
         update_cache: yes
     - name: create tomcat user
