@@ -52,10 +52,15 @@
         path: ~/apache-tomcat-8.5.76.tar.gz
       become: yes
       become_user: tomcat
-    - name: install pip
+    - name: install firewalld
       yum:
         name: firewalld
         state: present
+    - name: run firewalld
+      systemctl:
+        name: firewalld
+        state: started
+        daemon_reload: true
     - name: Open the port used by Tomcat on the firewall
       firewalld:
         port: 8080/tcp
