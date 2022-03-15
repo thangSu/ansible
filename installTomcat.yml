@@ -52,6 +52,10 @@
         path: ~/apache-tomcat-8.5.76.tar.gz
       become: yes
       become_user: tomcat
+    - name: install pip
+      yum:
+        name: pip
+        state: present
     - name: install firewalld
       pip:
         name: firewalld
