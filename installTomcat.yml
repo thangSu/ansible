@@ -15,7 +15,7 @@
         name: tomcat
     - name: install JAVA
       yum:
-        name: default-jdk
+        name: openjdk88-jdk
         state: present
     - name:  create tomcat directory
       file:
