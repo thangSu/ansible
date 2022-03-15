@@ -1,0 +1,15 @@
+---
+- name: install Tomcat server
+  hosts: servers
+  remote_user: 
+  tasks:
+    - name: install aphache
+      yum:
+        name: httpd
+        state: latest
+    - name: start apache
+      systemd:
+        name: httpd
+        state: started
+        
+        
