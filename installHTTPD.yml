@@ -3,20 +3,15 @@
   hosts: servers
   remote_user: 
   tasks:
+    - name: update system
+      yum:
+        update_only: yes
+        update_cache: yes
     - name: install aphache
       yum:
         name: httpd
-        
-    - name: Open the port used by Tomcat on the firewall
-      firewalld:
-        port: 80/tcp
-        permanent: yes
-        immediate: yes
-        state: enabled
-        state: latest
-    
     - name: start apache
-      systemd:
+      service:
         name: httpd
         state: started
         
