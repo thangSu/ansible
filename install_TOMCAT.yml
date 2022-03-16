@@ -14,7 +14,7 @@
     - name: Install tomcat components
       yum: 
         name: "{{ item }}" state: present
-      with_items:
+      loop:
         - tomcat-webapps
         - tomcat-admin-webapps
         - tomcat-docs-webapp
