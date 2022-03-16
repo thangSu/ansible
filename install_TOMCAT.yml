@@ -1,6 +1,6 @@
 ---
 - name: install Tomcat server
-  hosts: servers
+  hosts: webservers
   remote_user: 
   tasks:
     - name: Update system
