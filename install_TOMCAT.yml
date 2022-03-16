@@ -13,13 +13,13 @@
         state: present
     - name: Install tomcat components
       yum:
-        name="{{ item }}"
+        name="{{ item }}" state: present
         with_items:
           - tomcat-webapps
           - tomcat-admin-webapps
           - tomcat-docs-webapp
           - tomcat-javadoc
-        state: present
+       
     - name: start tomcat.service
       service:
         name: tomcat
