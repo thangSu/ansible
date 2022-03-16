@@ -1,0 +1,20 @@
+---
+- name: install Tomcat server
+  hosts: servers
+  remote_user: 
+  tasks:
+    - name: Update system
+      yum:
+        update_only: yes
+        update_cache: yes
+    - name: Install tomcat
+      yum:
+        name: tomcat
+    - name: Install tomcat components
+      yum:
+        name: tomcat-webapps tomcat-admin-webapps tomcat-docs-webapp tomcat-javadoc
+    - name: start tomcat.service
+      service:
+        name: tomcat
+        state: started
+        
