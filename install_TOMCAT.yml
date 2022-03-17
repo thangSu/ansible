@@ -1,7 +1,6 @@
 ---
 - name: install Tomcat server
   hosts: webservers
-  remote_user: 
   tasks:
     - name: Update system
       yum:
@@ -29,3 +28,11 @@
       service:
         name: tomcat
         enabled: yes
+    - name: make user/pass to login tomcat
+      template:
+        src: hosts
+        dest: /etc/tomcat/hosts
+    - name: restart tomcat
+      service:
+        name: tomcat
+        state: reloaded
