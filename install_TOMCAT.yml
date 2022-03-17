@@ -25,4 +25,7 @@
       service:
         name: tomcat
         state: started
-        
+    - name: enable startup tomcat.service
+      service:
+        name: tomcat
+        enable: yes
