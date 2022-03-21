@@ -39,5 +39,5 @@
     register: password
   - name: show
     debug:
-      var: password
+      var: password["stdout"]
       
