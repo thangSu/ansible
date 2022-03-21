@@ -1,7 +1,7 @@
 ---
 - name: install jenkins
   hosts: jenkins
-  task:
+  tasks:
   - name: update Amazon linux
     yum:
       update_only: yes
