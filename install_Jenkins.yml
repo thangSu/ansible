@@ -34,4 +34,10 @@
     service:
       name: jenkins
       enabled: yes
+  - name: get password
+    command: cat /var/lib/jenkins/secrets/initialAdminPassword
+    register: password
+  - name: show
+    debug:
+      name: password
       
