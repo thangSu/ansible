@@ -1,0 +1,37 @@
+---
+- name: install jenkins
+  host: jenkins
+  task:
+  - name: update Amazon linux
+    yum:
+      update_only: yes
+      update_cache: yes
+  - name: install git
+    yum:
+      name: git
+      state: present
+  - name: install java
+    yum:
+      name: java-1.8.0-openjdk
+      state: present
+  - name: download jenkin repo 
+    get_url:
+      url: https://pkg.jenkins.io/redhat/jenkins.repo
+      dest: /etc/yum.repos.d/jenkins.repo
+  - name: import key jenkins
+    rpm_key:
+      state: present
+      key: https://pkg.jenkins.io/redhat/jenkins.io.key
+  - name: install jenkins
+    yum: 
+      name: jenkins
+      state: present
+  - name: start service
+    service:
+      name: jenkins
+      state: started
+  - name: enable startup jenkins
+    service:
+      name: jenkins
+      enabled: yes
+      
