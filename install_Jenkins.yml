@@ -1,6 +1,6 @@
 ---
 - name: install jenkins
-  host: jenkins
+  hosts: jenkins
   task:
   - name: update Amazon linux
     yum:
