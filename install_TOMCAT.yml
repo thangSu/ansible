@@ -7,14 +7,11 @@
         update_only: yes
         update_cache: yes
     - name: Install tomcat
-      yum:
-        name: tomcat
-        state: present
-    - name: Install tomcat components
       yum: 
         name: "{{ item }}" 
         state: present
       loop:
+        - tomcat
         - tomcat-webapps
         - tomcat-admin-webapps
         - tomcat-docs-webapp
